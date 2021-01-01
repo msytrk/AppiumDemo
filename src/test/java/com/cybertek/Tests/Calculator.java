@@ -45,10 +45,10 @@ public class Calculator {
     AndroidElement plus= (AndroidElement) driver.findElementByAccessibilityId("plus");
     AndroidElement result= (AndroidElement) driver.findElementById("com.android.calculator2:id/result");
 
-        btn2.click();
-        plus.click();
-        btn2.click();
-        equals.click();
+        btn2.click(); // 2
+        plus.click(); // +
+        btn2.click(); // 2
+        equals.click(); // =
 
         String actualResult = result.getText();
         // To verify it
