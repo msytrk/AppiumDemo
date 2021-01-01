@@ -4,6 +4,8 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
@@ -38,7 +40,26 @@ public class Calculator {
     @Test
     public void test1(){
 
-        System.out.println("Test is passed");
+    AndroidElement btn2= (AndroidElement) driver.findElementById("com.android.calculator2:id/digit_2");
+    AndroidElement equals= (AndroidElement) driver.findElementByAccessibilityId("equals");
+    AndroidElement plus= (AndroidElement) driver.findElementByAccessibilityId("plus");
+    AndroidElement result= (AndroidElement) driver.findElementById("com.android.calculator2:id/result");
 
-    }
+        btn2.click();
+        plus.click();
+        btn2.click();
+        equals.click();
+
+        String actualResult = result.getText();
+        // To verify it
+        System.out.println(actualResult);
+        Assert.assertEquals("4",actualResult);
+
+   }
+
+   @After
+    public void tearDown(){
+
+        driver.closeApp();
+   }
 }
