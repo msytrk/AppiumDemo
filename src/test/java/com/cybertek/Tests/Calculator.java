@@ -1,22 +1,33 @@
 package com.cybertek.Tests;
 
+import com.cybertek.Utils.Log;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
+import java.util.logging.Logger;
 
 public class Calculator {
 
-    AndroidDriver<WebElement> driver;
+    AndroidDriver<AndroidElement> driver;
+
+
+
     @Before
     public  void setup(){
         DesiredCapabilities desiredCapabilities=new DesiredCapabilities();
@@ -40,10 +51,12 @@ public class Calculator {
     @Test
     public void test1(){
 
-    AndroidElement btn2= (AndroidElement) driver.findElementById("com.android.calculator2:id/digit_2");
-    AndroidElement equals= (AndroidElement) driver.findElementByAccessibilityId("equals");
-    AndroidElement plus= (AndroidElement) driver.findElementByAccessibilityId("plus");
-    AndroidElement result= (AndroidElement) driver.findElementById("com.android.calculator2:id/result");
+        Log.info("Test 1 from Appium");
+
+    AndroidElement btn2= driver.findElementById("com.android.calculator2:id/digit_2");
+    AndroidElement equals=  driver.findElementByAccessibilityId("equals");
+    AndroidElement plus= driver.findElementByAccessibilityId("plus");
+    AndroidElement result= driver.findElementById("com.android.calculator2:id/result");
 
         btn2.click(); // 2
         plus.click(); // +
@@ -54,6 +67,30 @@ public class Calculator {
         // To verify it
         System.out.println(actualResult);
         Assert.assertEquals("4",actualResult);
+
+   }
+
+   @Test
+   public void test2(){
+       MobileElement btn7 =driver.findElement(MobileBy.id("com.android.calculator2:id/digit_7"));
+       MobileElement btn8 =driver.findElement(MobileBy.id("com.android.calculator2:id/digit_8"));
+       MobileElement plus =driver.findElement(MobileBy.AccessibilityId("plus"));
+       MobileElement equals =driver.findElement(MobileBy.AccessibilityId("equals"));
+       MobileElement result= driver.findElement(MobileBy.id("com.android.calculator2:id/result"));
+       TouchAction touchActions=new TouchAction(driver);
+
+
+       /*btn7.click(); // 7
+       plus.click(); // +
+       btn8.click(); // 8
+       equals.click(); // =*/
+
+
+       String actualResult = result.getText();
+       // To verify it
+       System.out.println(actualResult);
+       Log.info(actualResult);
+       Assert.assertEquals("15",actualResult);
 
    }
 
