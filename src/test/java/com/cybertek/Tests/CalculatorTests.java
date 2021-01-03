@@ -1,3 +1,4 @@
+package com.cybertek.Tests;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
@@ -16,7 +17,6 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.net.MalformedURLException;
 import java.net.URL;
 public class CalculatorTests {
     AppiumDriver<AndroidElement> driver;
@@ -48,14 +48,14 @@ public class CalculatorTests {
         AndroidElement equalsBtn = driver.findElement(MobileBy.AccessibilityId("equals"));
         AndroidElement resultElement = driver.findElementById("com.android.calculator2:id/result");
         //to handle synchronization issues, same as in Selenium WebDriver
-        WebDriverWait wait = new WebDriverWait(driver, 20);
-        wait.until(ExpectedConditions.elementToBeClickable(btn2));
+
         btn2.click(); // 2
         plusBtn.click(); // +
         btn2.click(); // 2
         equalsBtn.click(); // =
         int expected = 4;
         int actual = Integer.parseInt(resultElement.getText());
+        System.out.println(actual);
         Assert.assertEquals(expected, actual);
     }
     @Test
@@ -75,6 +75,7 @@ public class CalculatorTests {
         touchAction.tap(new TapOptions().withElement(new ElementOption().withElement(equalsBtn))).perform();
         int expected = 18;
         int actual = Integer.parseInt(resultElement.getText());
+        System.out.println(actual);
         Assert.assertEquals(expected, actual);
     }
     @After
