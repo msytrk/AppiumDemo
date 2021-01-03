@@ -5,7 +5,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class LoginStepDefs {
+public class LoginStepDefinitions {
+
     LoginPage loginPage=new LoginPage();
 
 
@@ -14,7 +15,6 @@ public class LoginStepDefs {
         loginPage.getStartedElement.click();
 
     }
-
 
     @When("user logs in with etsy credentials")
     public void user_logs_in_with_etsy_credentials() {

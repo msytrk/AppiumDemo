@@ -1,11 +1,17 @@
 package com.cybertek.pages;
 
 import com.cybertek.Utils.ConfigurationReader;
+import com.cybertek.Utils.Driver;
 import com.cybertek.Utils.Log;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BasePage {
+    public LoginPage(){
+        PageFactory.initElements(Driver.getDriver(), this);
+    }
+
 
     @AndroidFindBy(id="com.etsy.android:id/edit_username")
     public AndroidElement emailElement;

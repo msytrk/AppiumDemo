@@ -2,10 +2,12 @@ package com.cybertek.Utils;
 
 import java.io.FileInputStream;
 import java.util.Properties;
+import org.apache.log4j.Logger;
 
 public class ConfigurationReader {
 
     private static Properties properties;
+    private final static Logger logger = Logger.getLogger(ConfigurationReader.class);
 
     static {
 
@@ -26,8 +28,8 @@ public class ConfigurationReader {
     }
 
     public static void main(String[] args) {
-        System.out.println("ConfigurationReader.get(\"paltform\") = " + ConfigurationReader.get("android.app"));
-
+        System.out.println("Test");
+        logger.info("adasdasd");
     }
 
 }

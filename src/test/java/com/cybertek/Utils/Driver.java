@@ -22,9 +22,9 @@ public class Driver {
     }
 
     public static  AppiumDriver<MobileElement> getDriver(){
-
         if(driver==null){
-            String platfrom=ConfigurationReader.get("platfrom");
+            String platfrom=ConfigurationReader.get("platform");
+            System.out.println(platfrom);
             Log.info("Test is running on "+ platfrom );
 
             switch(platfrom)
