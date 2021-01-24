@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
-public class ChewyVasyl {
+public class ChewyApp {
     AppiumDriver<AndroidElement> driver;
     @Before
     public void setup() throws Exception {
